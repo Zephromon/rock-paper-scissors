@@ -15,59 +15,43 @@ function playRound(playerSelection, computerSelection) {
     playerSelection.toLowerCase();
      
     if (playerSelection === "rock" && computerSelection === "scissors") {
-        return "You win! Rock beats Scissors!";
+        return "win";
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You win! Paper beats Rock!";
+        return "win";
     }
     else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return "You win! Scissors beats Paper!";
+        return "win";
     }
     // Above segment is when players wins.
 
     else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return "You lose! Rock beats Scissors!";
+        return "lose";
     }
     else if (playerSelection === "rock" && computerSelection === "paper") {
-        return "You lose! Paper beats Rock!";
+        return "lose";
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return "You lose! Scissors beats Paper!";
+        return "lose";
     }
     // Above segment is when computer wins.
 
-    else if (!(playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors")) {
-        return "You need to choose rock, paper or scissors!"
-    }
-
     else {
-        return "It's a Draw!";
+        return "draw";
     }
     //Draw
 }
 
-function game() {
-    let playerWins = 0;
-    let computerWins = 0;
-    
-    for (let i = 0; i < 5; i++) {
-        let roundPlayed = playRound(prompt("Do you choose Rock, Paper or Scissors?"), getComputerChoice())
-        console.log(roundPlayed)
-        if (roundPlayed.includes("win")) {playerWins++}
-        else if (roundPlayed.includes("lose")) {computerWins++}
-        else {
-            console.log("Try again!")
-            i--
-        }
-        console.log(`Player: ${playerWins}, Computer: ${computerWins}`)
-    }
-    if (playerWins > computerWins) {
-        console.log("Player wins! Well done!")
-    }
-    else {
-        console.log("Computer wins! Better luck next time!")
-    }
-}
+const buttons = document.querySelectorAll("button");
 
-console.log("Best of 5 game! Good luck!")
-game()
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", () => {
+        let round_played = playRound(buttons[i].textContent.toLowerCase(), getComputerChoice());
+        if (round_played == "win") {
+            document.querySelector("#player-score").textContent = `${+document.querySelector("#player-score").textContent + 1}`;
+        }
+        else if (round_played == "lose") {
+            document.querySelector("#computer-score").textContent = `${+document.querySelector("#computer-score").textContent + 1}`;
+        }
+    })
+}

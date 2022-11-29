@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: peachpuff ;
+}
+
+#screen-label {
+    display: flex;
+    justify-content: space-around;
+    font-size: 70px;
+    width: 50vw;
+}
+
+#screen-label > p {
+    display: flex;
+    justify-content: center;
+}
+
+#screen {
+    display: flex;
+    height: 50vh;
+    width: 50vw;
+    background-color: black;
+    color: white;
+    font-size: 200px;
+    justify-content: space-around;
+    margin-top: 2vh;
+    border-radius: 50px;
+}
+
+#screen > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#button-container {
+    margin-top: 2vh;
+}
+
+#button-container > button {
+    height: 10vh;
+    width: 20vh;
+    font-size: 40px;
+    border-radius: 10px;
+}
